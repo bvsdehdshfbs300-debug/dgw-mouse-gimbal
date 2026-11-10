@@ -1,3 +1,18 @@
+## ESP32-S3 版文件对照
+
+| 位置 | 对应部分 | 看什么 |
+| --- | --- | --- |
+| [pc/mouse_gui.py](pc/mouse_gui.py) | 中文电脑控制界面 | 鼠标轨迹、点动、灵敏度、死区与串口 |
+| [pc/mouse_control.py](pc/mouse_control.py) | 命令行控制 | 从电脑发送串口控制命令 |
+| [firmware_idf/main/main.c](firmware_idf/main/main.c) | ESP-IDF 主固件 | 解释命令，产生两轴 STEP/DIR 与激光控制 |
+| [firmware/mouse_gimbal/mouse_gimbal.ino](firmware/mouse_gimbal/mouse_gimbal.ino) | Arduino 备份固件 | 另一套构建入口，按对应说明选用 |
+| [docs/05_串口协议.md](docs/05_%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE.md) | 两端通信约定 | PC 发什么、固件如何解释 |
+| [maixcam/capture_dataset.py](maixcam/capture_dataset.py) | 采集脚本备份 | MaixCAM 触屏拍照 |
+
+此目录对应 ESP32-S3 路线，串口命令与 FPGA 版分别查看。下方保留原完整教程。
+
+---
+
 # ESP32-S3 双轴鼠标云台
 
 这是一个面向入门者的 ESP32-S3 双轴云台项目。电脑端用中文 GUI 控制，ESP32-S3 输出 `Stp/Dir` 脉冲，驱动两台张大头/ZDT X42S 闭环步进电机，实现鼠标控制、点动控制和激光开关。
