@@ -18,10 +18,18 @@ flowchart LR
  E --> M
 ```
 
-| 目录 | 主控 / 工具 | 上位机入口 |
+## 目录和文件对应什么
+
+| 位置 | 对应部分 | 看什么 |
 | --- | --- | --- |
-| `esp32` | ESP32-S3，ESP-IDF；另留 Arduino 版本 | `esp32/pc/mouse_gui.py` |
-| `fpga` | EP4CE6E22C8，Quartus 18.1 工程 | `fpga/pc/mouse_gimbal_control.py` |
+| [esp32/](esp32/README.md) | ESP32-S3 路线 | 中文 PC GUI、串口命令与 STEP/DIR 固件 |
+| [fpga/](fpga/README.md) | FPGA 路线 | PC 二进制协议、UART 接收与双轴脉冲逻辑 |
+| [README.md](README.md) | 项目总入口 | 先看模块对应关系，再选运行路线 |
+| [VALIDATION.md](VALIDATION.md) | 检查记录 | 哪些做过语法／编译检查，哪些还需上板 |
+| [NOTICE.md](NOTICE.md) | 来源与依赖 | 平台 SDK、运行库及原有许可 |
+| [LICENSE](LICENSE) | 开源许可 | MIT 授权条款与版权署名 |
+| [.gitignore](.gitignore) | 本地文件排除规则 | 个人配置、模型、日志和编译生成物 |
+
 
 ## ESP32-S3 版
 
