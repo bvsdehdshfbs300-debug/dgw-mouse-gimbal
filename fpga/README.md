@@ -1,3 +1,20 @@
+## FPGA 版文件对照
+
+| 位置 | 对应部分 | 看什么 |
+| --- | --- | --- |
+| [src/mouse_gimbal_top.v](src/mouse_gimbal_top.v) | 顶层控制逻辑 | 串口帧校验、两轴使能、方向与周期设置 |
+| [src/uart_rx.v](src/uart_rx.v) | UART 接收器 | 将串口位流还原为字节 |
+| [src/stepper_axis.v](src/stepper_axis.v) | 单轴脉冲发生器 | 按半周期输出 STEP 与方向 |
+| [pc/mouse_gimbal_control.py](pc/mouse_gimbal_control.py) | 电脑控制界面 | 把鼠标变化编码为 FPGA 串口帧 |
+| [mouse_gimbal.qsf](mouse_gimbal.qsf) | 器件与引脚 | Cyclone IV 器件、顶层和引脚映射 |
+| [constraints.sdc](constraints.sdc) | 时钟约束 | 工程时钟约束 |
+| [build.ps1](build.ps1) | 编译脚本 | 调用 Quartus 构建工程 |
+| [program.ps1](program.ps1) | 下载脚本 | 手动将生成的 SOF 下载到板卡 |
+
+这一路线使用二进制串口帧。原接线与编译说明继续保留在下面。
+
+---
+
 # FPGA mouse gimbal control
 
 This project controls two ZDT X42S stepper motors in pulse mode.
