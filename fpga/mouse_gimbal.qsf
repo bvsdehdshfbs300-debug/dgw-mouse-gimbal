@@ -1,0 +1,30 @@
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE6E22C8
+set_global_assignment -name TOP_LEVEL_ENTITY mouse_gimbal_top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+
+set_global_assignment -name VERILOG_FILE src/mouse_gimbal_top.v
+set_global_assignment -name VERILOG_FILE src/uart_rx.v
+set_global_assignment -name VERILOG_FILE src/stepper_axis.v
+set_global_assignment -name SDC_FILE constraints.sdc
+
+set_location_assignment PIN_25 -to clk
+set_location_assignment PIN_23 -to uart_rx
+set_location_assignment PIN_10 -to uart_tx
+
+set_location_assignment PIN_39 -to m1_step
+set_location_assignment PIN_42 -to m1_dir
+set_location_assignment PIN_38 -to m1_en
+set_location_assignment PIN_43 -to m2_step
+set_location_assignment PIN_44 -to m2_dir
+set_location_assignment PIN_41 -to m2_en
+set_location_assignment PIN_11 -to status_led
+
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
